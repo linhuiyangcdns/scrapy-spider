@@ -9,6 +9,7 @@ import random
 import scrapy
 from scrapy import log
 import time
+from .cookie import cookies
 
 
 # logger = logging.getLogger()
@@ -50,3 +51,15 @@ class ProxyMiddleWare(object):
                 time.sleep(1)
         proxy = random.choice(proxies).strip()
         return proxy
+
+
+
+class CookiesMiddleware(object):
+    """ 换Cookie """
+
+    def process_request(self, request, spider):
+        #cookie = random.choice(cookies)
+        if cookies != None:
+            cookie =random.choice(cookies)
+        else:
+            print("cookie池没有cookie")
